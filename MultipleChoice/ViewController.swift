@@ -28,17 +28,25 @@ class ViewController: UIViewController {
     // Check Answers Button
     @IBAction func CheckAnswers(_ sender: Any) {
         
-        guard let user = NumberOfQuestions.text
-            else { NumberOfQuestionsLabel.text = "Please enter an integer greated than 0"
+        
+        let NumberOfQuestionsAsInt = Int (NumberOfQuestions.text!)
+        
+        guard let user = NumberOfQuestions
+            else { NumberOfQuestionsLabel.text = "Please enter an integer greater than 0"
                 return
         }
-                guard let student = StudentAnswers.text
-                    else {
-                        StudentAnswersLabel.text = "Please be sure to enter"
-                    return
-                }
+        guard let student = StudentAnswers.text, student.count == NumberOfQuestionsAsInt
+            else {
+                StudentAnswersLabel.text = "The number of student answers must be the same as the number of questions."
+                return
+        }
+        guard let correct = CorrectAnswers.text, correct.count == NumberOfQuestionsAsInt
+            else {
+                CorrectAnswersLabel.text = "The number of correct answers must be the same as the number of questions and student answers."
+                return
         }
     }
     
-
-
+    
+    
+}
