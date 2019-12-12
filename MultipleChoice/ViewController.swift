@@ -49,18 +49,29 @@ class ViewController: UIViewController {
                 return
         }
         
+        // String for student's right answers
+        var rightAnswers = 0
+        
+        
         // Loop to print out each character
-        for (position, singleCharacter) in student.enumerated () {
-            print(singleCharacter)
-        }
-        for (position, singleCharacter) in correct.enumerated () {
-            print(singleCharacter)
+        for (position, answer) in student.enumerated () {
+            
+            // Matching letters to find the correct answers
+            let StudentAnswersAsIndex = CorrectAnswers.index (CorrectAnswers.startIndex, offsetBy: position)
+            let StudentAnswers = CorrectAnswers [StudentAnswersAsIndex]
+       
+            // Checking if student and teacher answers are the same
+            if answer == CorrectAnswers.text {
+                rightAnswers += 1
             
         }
         
+        }
         
         
     }
+    
+    
 }
 
 
